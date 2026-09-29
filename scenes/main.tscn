@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bo7kvhmf81ed7"]
+
+[ext_resource type="Script" uid="uid://cslenvxl2t1y3" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://ci4rkck7man87" path="res://scenes/levels/level1.tscn" id="2_0wfyh"]
+[ext_resource type="FontFile" uid="uid://frsfo5nbsbtt" path="res://asset/fonts/Square-Black.ttf" id="4_jyhfs"]
+[ext_resource type="AudioStream" uid="uid://j66yfyxa5m5o" path="res://asset/sounds/music.ogg" id="4_tbgi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwcng"]
+bg_color = Color(0.07450981, 0.3529412, 0.6, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[node name="Main" type="Node2D" unique_id=585287143]
+script = ExtResource("1_sugp2")
+
+[node name="LevelRoot" parent="." unique_id=344581360 instance=ExtResource("2_0wfyh")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1843891593]
+
+[node name="ScorePanel" type="Panel" parent="HUD" unique_id=669274481]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 50.0
+offset_right = 56.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gwcng")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="HUD/ScorePanel" unique_id=565123477]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.18
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_jyhfs")
+theme_override_font_sizes/font_size = 32
+text = "SCORE: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Fade" type="ColorRect" parent="HUD" unique_id=151778380]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1623102569]
+stream = ExtResource("4_tbgi4")
+autoplay = true
